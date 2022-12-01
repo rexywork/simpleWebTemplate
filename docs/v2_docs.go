@@ -42,7 +42,7 @@ const docTemplatev2 = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.User"
+                            "$ref": "#/definitions/model.UserResponse"
                         }
                     }
                 }
@@ -50,9 +50,12 @@ const docTemplatev2 = `{
         }
     },
     "definitions": {
-        "handler.User": {
+        "model.UserResponse": {
             "type": "object",
             "properties": {
+                "id": {
+                    "type": "string"
+                },
                 "name": {
                     "type": "string"
                 }

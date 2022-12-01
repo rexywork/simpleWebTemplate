@@ -13,8 +13,10 @@ require (
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
 	github.com/swaggo/files v0.0.0-20220728132757-551d4a08d97a
 	github.com/swaggo/gin-swagger v1.5.3
-	github.com/swaggo/swag v1.8.8 // indirect
+	github.com/swaggo/swag v1.8.8
 	golang.org/x/crypto v0.3.0 // indirect
 	golang.org/x/tools v0.3.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
+	gorm.io/driver/postgres v1.4.5
+	gorm.io/gorm v1.24.2
 )
