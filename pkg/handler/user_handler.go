@@ -9,15 +9,13 @@ type User struct {
 	Name string
 }
 
-// PingExample godoc
-// @Summary ping example
-// @Schemes
+// @Summary Get User
 // @Description get user
-// @Tags example
+// @Tags User
 // @Accept json
 // @Produce json
 // @Success 200 {object} User
-// @Router /v1/users [get]
+// @Router /users [get]
 func GetUser(c *gin.Context) {
 	c.JSON(http.StatusOK, User{
 		Name: "Test",

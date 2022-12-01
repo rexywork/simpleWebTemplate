@@ -1,4 +1,4 @@
-basePath: /
+basePath: /v1
 definitions:
   handler.User:
     properties:
@@ -19,7 +19,7 @@ info:
   title: Gin Swagger Example API
   version: "1.0"
 paths:
-  /v1/users:
+  /users:
     get:
       consumes:
       - application/json
@@ -31,9 +31,9 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/handler.User'
-      summary: ping example
+      summary: Get User
       tags:
-      - example
+      - User
 schemes:
 - http
 swagger: "2.0"

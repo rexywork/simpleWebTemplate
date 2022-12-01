@@ -4,14 +4,11 @@ import (
 	"context"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	swaggerfiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	_ "simpleWebTemplate/docs"
-	"simpleWebTemplate/pkg/api"
 	"syscall"
 	"time"
 )
@@ -19,21 +16,15 @@ import (
 type Server struct {
 	BasePath string
 	Port string
-	Handler http.Handler
+	Handler *gin.Engine
 }
 
 
 func NewServer() *Server{
-	router := gin.Default()
-	router.GET("/swagger/*any",
-		ginSwagger.WrapHandler(swaggerfiles.Handler))
-	v1 := router.Group("/v1")
-	api.AddUserRoutes(v1)
-
 	server := Server{
 		BasePath: "/",
 		Port: "8080",
-		Handler: router,
+		Handler: NewRouter(),
 	}
 	return &server
 }
