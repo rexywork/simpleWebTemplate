@@ -9,6 +9,14 @@ type UserDAO struct {
 	DB *gorm.DB
 }
 
+func NewUserDAO(db *gorm.DB) *UserDAO{
+	return &UserDAO{
+		DB: db,
+	}
+}
+
+
+
 type User struct {
 	ID string `gorm:"primaryKey;type:varchar(32)"`
 	Name string `gorm:"type:varchar(256)"`

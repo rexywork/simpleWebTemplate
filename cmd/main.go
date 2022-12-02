@@ -1,11 +1,15 @@
 package main
 
 import (
-	"simpleWebTemplate/internal/server"
+	config "simpleWebTemplate/config"
+	"simpleWebTemplate/pkg/server"
 )
 
 
 func main() {
-	srv := server.NewServer()
+	// initialize server config
+	config := &config.Config{}
+	config.Default()
+	srv := server.NewServer(config)
 	srv.Serve()
 }

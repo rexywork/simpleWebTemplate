@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"simpleWebTemplate/pkg/api"
 )
 
 // @title Gin Swagger Example API
@@ -22,7 +21,7 @@ import (
 // @host localhost:8080
 // @BasePath /v2
 // @schemes http
-func AddV2UserRouter(router *gin.Engine) {
+func (api *API)AddV2UserRouter(router *gin.Engine) {
 	v2 := router.Group("/v2")
 	api.AddUserRoutes(v2)
 	router.GET("/swagger/v2/*any", ginSwagger.WrapHandler(swaggerFiles.NewHandler(), ginSwagger.InstanceName("v2")))
