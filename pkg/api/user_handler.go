@@ -7,14 +7,14 @@ import (
 	"simpleWebTemplate/pkg/model"
 )
 
-// @Summary Get User
-// @Description get user
+// @Summary Get Users
+// @Description List users existing.
 // @Tags User
 // @Accept json
 // @Produce json
-// @Success 200 {object} model.UserResponse
+// @Success 200 {object} model.UserResponses
 // @Router /users [get]
-func (api *API) GetUser(c *gin.Context) {
+func (api *API) GetUsers(c *gin.Context) {
 
 	user, err := api.UserService.GetUser(c.Param("id"))
 	if err != nil {
@@ -25,5 +25,9 @@ func (api *API) GetUser(c *gin.Context) {
 	}
 	var userResponse model.UserResponse
 	userResponse.ConvertUserToUserResponse(user)
-	c.JSON(http.StatusOK, userResponse)
+
+	var userResponses model.UserResponses
+	userResponses = append(userResponses, userResponse)
+
+	c.JSON(http.StatusOK, userResponses)
 }

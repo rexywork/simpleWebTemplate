@@ -25,15 +25,17 @@ paths:
     get:
       consumes:
       - application/json
-      description: get user
+      description: List users existing.
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/model.UserResponse'
-      summary: Get User
+            items:
+              $ref: '#/definitions/model.UserResponse'
+            type: array
+      summary: Get Users
       tags:
       - User
 schemes:

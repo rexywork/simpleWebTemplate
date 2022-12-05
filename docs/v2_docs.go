@@ -27,7 +27,7 @@ const docTemplatev2 = `{
     "paths": {
         "/users": {
             "get": {
-                "description": "get user",
+                "description": "List users existing.",
                 "consumes": [
                     "application/json"
                 ],
@@ -37,12 +37,15 @@ const docTemplatev2 = `{
                 "tags": [
                     "User"
                 ],
-                "summary": "Get User",
+                "summary": "Get Users",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/model.UserResponse"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.UserResponse"
+                            }
                         }
                     }
                 }

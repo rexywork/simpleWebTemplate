@@ -13,6 +13,7 @@ import (
 	"simpleWebTemplate/internal/service"
 	"simpleWebTemplate/pkg/api"
 	"simpleWebTemplate/pkg/dao/postgres"
+	"strconv"
 	"syscall"
 	"time"
 )
@@ -32,8 +33,8 @@ func NewServer(config *config.Config) *Server {
 	service := &service.UserService{UserRepository: postgres.NewMockUserDAO()}
 
 	server := Server{
-		BasePath: "/",
-		Port:     "8080",
+		BasePath: config.BasePath,
+		Port:     strconv.Itoa(config.Port),
 		Handler:  NewRouter(),
 		Config:   config,
 		ApiRoute: &api.API{UserService: service},
@@ -47,7 +48,7 @@ func (server *Server) Serve() {
 		Handler: server.Handler,
 	}
 
-	// Register Web Service
+	// Register Web Service handler
 	server.RegisterRouter()
 
 	go func() {
@@ -58,7 +59,7 @@ func (server *Server) Serve() {
 	}()
 
 	// Wait for interrupt signal to gracefully shutdown the server with
-	// a timeout of 5 seconds.
+	// a timeout of 1 seconds.
 	quit := make(chan os.Signal)
 	// kill (no param) default send syscanll.SIGTERM
 	// kill -2 is syscall.SIGINT
@@ -72,7 +73,7 @@ func (server *Server) Serve() {
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatal("Server Shutdown:", err)
 	}
-	// catching ctx.Done(). timeout of 5 seconds.
+	// catching ctx.Done(). timeout of 1 seconds.
 	select {
 	case <-ctx.Done():
 		log.Println("timeout of 5 seconds.")

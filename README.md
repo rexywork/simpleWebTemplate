@@ -37,7 +37,7 @@ go install github.com/swaggo/swag/cmd/swag@latest
 and then you can run:
 
 Windows
-- `swag i -g pkg\api\v1\api.go  --instanceName v1`
+- `swag i -g pkg\api\api_v1.go  --instanceName v1`
 
 Linux
-- `swag i -g pkg/api/v1/api.go  --instanceName v1`
+- `swag i -g pkg/api/api_v1.go  --instanceName v1`

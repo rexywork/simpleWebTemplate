@@ -7,5 +7,5 @@ import (
 func (api *API) AddUserRoutes(rg *gin.RouterGroup) {
 	users := rg.Group("/users")
 
-	users.GET("", api.GetUser)
+	users.GET("", api.GetUsers)
 }
