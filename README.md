@@ -22,7 +22,7 @@ Linux
 
 <h2> How to access Swagger </h2>
 
-URL: http://localhost:8080/swagger/index.html
+URL: http://localhost:8080/swagger/<version>/index.html
 
 <h2> How to renew Swagger description </h2>
 Usually the swagger would be updated to latest.
